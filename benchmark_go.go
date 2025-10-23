@@ -37,7 +37,7 @@ type Data struct {
 }
 
 func main() {
-	iterations := 10000
+	iterations := 100000
 
 	// Read test data
 	jsonData, err := os.ReadFile("test_data.json")
@@ -60,7 +60,7 @@ func main() {
 	// Encode benchmark
 	var data Data
 	sonic.Unmarshal(jsonData, &data)
-	
+
 	var totalEncodeTime time.Duration
 	for i := 0; i < iterations; i++ {
 		start := time.Now()
@@ -72,12 +72,12 @@ func main() {
 	}
 
 	fmt.Printf("Go (sonic) - Iterations: %d\n", iterations)
-	fmt.Printf("Decode: %.6f ms (avg: %.6f ms)\n", 
+	fmt.Printf("Decode: %.6f ms (avg: %.6f ms)\n",
 		float64(totalDecodeTime.Microseconds())/1000.0,
 		float64(totalDecodeTime.Microseconds())/float64(iterations)/1000.0)
-	fmt.Printf("Encode: %.6f ms (avg: %.6f ms)\n", 
+	fmt.Printf("Encode: %.6f ms (avg: %.6f ms)\n",
 		float64(totalEncodeTime.Microseconds())/1000.0,
 		float64(totalEncodeTime.Microseconds())/float64(iterations)/1000.0)
-	fmt.Printf("Total: %.6f ms\n", 
+	fmt.Printf("Total: %.6f ms\n",
 		float64(totalDecodeTime.Microseconds()+totalEncodeTime.Microseconds())/1000.0)
 }

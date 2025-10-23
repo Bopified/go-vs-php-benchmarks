@@ -5,7 +5,7 @@ if (!extension_loaded('simdjson')) {
     exit(0);
 }
 
-$iterations = 10000;
+$iterations = 100000;
 
 // Read test data
 $jsonData = file_get_contents('test_data.json');

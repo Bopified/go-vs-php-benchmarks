@@ -1,6 +1,6 @@
 <?php
 
-$iterations = 10000;
+$iterations = 100000;
 
 // Read test data
 $jsonData = file_get_contents('test_data.json');
